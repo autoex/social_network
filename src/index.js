@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 let nav = {
-  profile: '#profile',
-  messages: '#messages',
-  news: '#news',
-  music: '#music',
-  settings: '#settings'
+  profile: '/profile',
+  messages: '/messages',
+  news: '/news',
+  music: '/music',
+  settings: '/settings'
   
 }
 ReactDOM.render(
