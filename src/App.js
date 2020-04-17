@@ -7,7 +7,7 @@ import Nav from "./components/Nav/Nav";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 
-// import Footer from "./components/Footer";
+// import Footer from "./components/Footer/Footer";
 
 class App extends React.Component {
     render() {
