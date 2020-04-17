@@ -7,6 +7,8 @@ import Nav from "./components/Nav/Nav";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
+import Settings from "./components/Settings/Settings";
+import Music from "./components/Music/Music";
 import {BrowserRouter, Route} from "react-router-dom";
 
 // import Footer from "./components/Footer/Footer";
@@ -23,6 +25,8 @@ class App extends React.Component {
                         <Route path='/messages' component={Dialogs}/>
                         <Route path='/profile' component={Profile}/>
                         <Route path='/news' component={News}/>
+                        <Route path='/settings' component={Settings}/>
+                        <Route path='/music' component={Music}/>
 
                     </div>
                     {/*  <Footer /> */}
