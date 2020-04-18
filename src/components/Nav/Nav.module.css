@@ -1,10 +1,26 @@
 .nav {
-  grid-area: nav;
-  background-color: chartreuse;
+    grid-area: nav;
+    background-color: chartreuse;
+    padding: 5px;
 }
+
+.nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav a.active {
+    color: cadetblue;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
 .item {
-  background: darkcyan;
+    background: darkcyan;
 }
+
 .item.active {
-  background-color: gold;
+    background-color: gold;
 }
