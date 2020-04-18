@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Nav.module.css";
+import {NavLink} from "react-router-dom";
 
 class Nav extends React.Component {
   render() {
@@ -24,7 +25,7 @@ class Nav extends React.Component {
         </li> */}
           {Object.keys(nav).map(el => (
             <li>
-              <a href={nav[el]}>{el.toUpperCase()}</a>
+              <NavLink to={nav[el]}>{el.toUpperCase()}</NavLink>
             </li>
           ))}
         </ul>

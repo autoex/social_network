@@ -28,6 +28,7 @@ class App extends React.Component {
                         <Route path='/settings' component={Settings}/>
                         <Route path='/music' component={Music}/>
 
+
                     </div>
                     {/*  <Footer /> */}
                 </div>
