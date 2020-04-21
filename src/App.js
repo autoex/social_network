@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 //import "./App.css";
 import "./Style.css";
 import Header from "./components/Header/Header";
@@ -22,7 +22,7 @@ class App extends React.Component {
                     <Header/>
                     <Nav nav={nav}/>
                     <div className="app-wrapper-content">
-                        <Route path='/messages' component={Dialogs}/>
+                        <Route  path='/dialogs' component={Dialogs}/>
                         <Route path='/profile' component={Profile}/>
                         <Route path='/news' component={News}/>
                         <Route path='/settings' component={Settings}/>

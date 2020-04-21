@@ -5,12 +5,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 let nav = {
   profile: '/profile',
-  messages: '/messages',
+  messages: '/dialogs',
   news: '/news',
   music: '/music',
   settings: '/settings'
   
-}
+};
 ReactDOM.render(
   <React.StrictMode>
     <App nav={nav} />

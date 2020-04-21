@@ -1,1 +1,27 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    grid-column-gap: 10px;
+}
 
+.dialogs_items {
+    border-right: #282c34 solid 1px;
+}
+
+.dialogs_items .dialog {
+    padding: 5px;
+}
+.dialogs_items .dialog:nth-child(1), .message:nth-child(1) {
+    padding-top: 0;
+}
+
+.dialogs_items .dialog.active {
+    color: goldenrod;
+}
+
+.messages {
+}
+
+.message {
+    padding: 5px;
+}

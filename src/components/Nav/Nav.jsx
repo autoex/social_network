@@ -27,7 +27,7 @@ class Nav extends React.Component {
                       <li>
                         <NavLink to={nav[el]} activeClassName={classes.active}>{el.toUpperCase()}</NavLink>
                       </li>
-                    ))};
+                    ))}
                 </ul>
             </nav>
         );
