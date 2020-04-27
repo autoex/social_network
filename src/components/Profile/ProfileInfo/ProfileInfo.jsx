@@ -8,7 +8,7 @@ class ProfileInfo extends React.Component {
         return (
             <div>
                 <div>
-                    <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt=""/>
+                    <img className={classes.profileInfo_header_img} src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt=""/>
                 </div>
                 <div>
                     Ava + description
