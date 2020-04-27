@@ -8,7 +8,15 @@ class MyPosts extends React.Component {
         return (
             <div className={classes.myPosts}>
                 <div>My posts</div>
-                <div>New post</div>
+                <div>
+                    <div>
+                        <textarea>
+                            Some text here...
+                        </textarea>
+                    </div>
+
+                    <button>Add Post</button>
+                </div>
                 <Post message='Sick and Tired' likes='11'/>
                 <Post message='Cat get your tongue' likes='23'/>
             </div>
