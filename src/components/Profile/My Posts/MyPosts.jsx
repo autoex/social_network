@@ -4,10 +4,13 @@ import Post from "./Post/Post"
 
 class MyPosts extends React.Component {
     render() {
-    let postsData = [
+    let posts = [
         {id:1, message: 'Sick and Tired', likesCount: 11},
         {id:2, message: 'Cat get your tongue', likesCount: 23}
     ];
+
+
+     let postsElements = posts.map(p => <Post message={p.message} likes={p.likesCount} />);
         return (
             <div className={classes.myPosts}>
                 <div>My posts</div>
@@ -20,8 +23,7 @@ class MyPosts extends React.Component {
 
                     <button>Add Post</button>
                 </div>
-                <Post message={postsData[0].message} likes={postsData[0].likesCount} />
-                <Post message={postsData[1].message} likes={postsData[1].likesCount} />
+                {postsElements}
             </div>
         );
     }

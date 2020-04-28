@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
     grid-column-gap: 10px;
+    height: 100%;
 }
 
 .dialogs_items {
