@@ -1,28 +1,7 @@
 import React from "react";
 import classes from "./Dialogs.module.css";
-import {NavLink} from "react-router-dom";
-
-
-class DialogItem extends React.Component {
-    render() {
-        let path = "/dialogs/" + this.props.id;
-        return (
-            <div className={`${classes.dialog} ${classes.active}`}>
-                <NavLink to={path}>{this.props.name}</NavLink>
-            </div>
-        );
-    }
-}
-
-class Message extends React.Component {
-    render() {
-
-        return (
-            <div className={classes.message}>{this.props.message}</div>
-        );
-    }
-
-}
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
 class Dialogs extends React.Component {
     render() {
