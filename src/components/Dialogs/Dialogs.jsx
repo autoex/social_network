@@ -5,20 +5,9 @@ import Message from "./Message/Message";
 
 class Dialogs extends React.Component {
     render() {
-        let dialogs = [
-            {id: 1, name: 'Dimich'},
-            {id: 2, name: 'Andrew'},
-            {id: 3, name: 'Margo'},
-            {id: 4, name: 'Ralf'},
-            {id: 5, name: 'Kimi'},
-        ];
 
-        let messages = [
-            {id: 1, message: 'Hi'},
-            {id: 2, message: 'How is your going?'},
-            {id: 3, message: 'Thanks. I\'m fine'},
-            {id: 4, message: 'And you?'}
-        ];
+        let dialogs = this.props.dialogs;
+        let messages =this.props.messages;
 
         let dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
 

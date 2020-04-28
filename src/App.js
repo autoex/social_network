@@ -16,14 +16,17 @@ import {BrowserRouter, Route} from "react-router-dom";
 class App extends React.Component {
     render() {
         let nav = this.props.nav;
+        let dialogs = this.props.dialogs;
+        let messages = this.props.messages;
+        let posts = this.props.posts;
         return (
             <BrowserRouter>
                 <div className="app-wrapper">
                     <Header/>
                     <Nav nav={nav}/>
                     <div className="app-wrapper-content">
-                        <Route path='/dialogs' component={Dialogs}/>
-                        <Route path='/profile' component={Profile}/>
+                        <Route path='/dialogs' render={() => <Dialogs dialogs={dialogs} messages={messages}/>}/>
+                        <Route path='/profile' render={() => <Profile posts={posts}/>}/>
                         <Route path='/news' component={News}/>
                         <Route path='/settings' component={Settings}/>
                         <Route path='/music' component={Music}/>
