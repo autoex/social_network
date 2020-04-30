@@ -6,8 +6,8 @@ import Message from "./Message/Message";
 class Dialogs extends React.Component {
     render() {
 
-        let dialogs = this.props.dialogs;
-        let messages =this.props.messages;
+        let dialogs = this.props.state.dialogs;
+        let messages =this.props.state.messages;
 
         let dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
 

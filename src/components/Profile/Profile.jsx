@@ -6,7 +6,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 class Profile extends React.Component {
     render() {
-        let posts = this.props.posts;
+        let posts = this.props.state.posts;
         // debugger;
         return (
             <div>
