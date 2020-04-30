@@ -5,10 +5,11 @@ import {NavLink} from "react-router-dom";
 class Nav extends React.Component {
     render() {
         let nav = this.props.nav;
+
         return (
             <nav className={classes.nav}>
                 <ul>
-                    {/*<li>
+                   {/* <li>
                         <NavLink to="/profile">Profile</NavLink>
                     </li>
                     <li>

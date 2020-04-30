@@ -15,10 +15,10 @@ import {BrowserRouter, Route} from "react-router-dom";
 
 class App extends React.Component {
     render() {
-        let nav = this.props.nav;
-        let dialogs = this.props.dialogs;
-        let messages = this.props.messages;
-        let posts = this.props.posts;
+        let nav = this.props.state.nav;
+        let dialogs = this.props.state.dialogsPage.dialogs;
+        let messages = this.props.state.dialogsPage.messages;
+        let posts = this.props.state.profilePage.posts;
         return (
             <BrowserRouter>
                 <div className="app-wrapper">
