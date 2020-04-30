@@ -1,16 +1,19 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 1fr 12fr;
     grid-column-gap: 10px;
     height: 100%;
 }
 
 .dialogs_items {
-    border-right: #282c34 solid 1px;
 }
 
 .dialogs_items .dialog {
     padding: 5px;
+}
+.dialogs_items .dialog a {
+    color: #222;
+    font-weight: 500;
 }
 .dialogs_items .dialog:nth-child(1), .message:nth-child(1) {
     padding-top: 0;
@@ -25,4 +28,10 @@
 
 .message {
     padding: 5px;
+    background: aliceblue;
+    border-radius: 5px;
+    margin: 0 0 5px;
+}
+.message:nth-child(even) {
+    text-align: right;
 }
