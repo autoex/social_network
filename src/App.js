@@ -9,7 +9,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 
 // import Footer from "./components/Footer/Footer";
 
@@ -19,23 +19,22 @@ class App extends React.Component {
         let dialogsPage = this.props.state.dialogsPage;
         let profilePage = this.props.state.profilePage;
         return (
-            <BrowserRouter>
-                <div className="app-wrapper">
-                    <Header/>
-                    <Nav nav={nav}/>
-                    <div className="app-wrapper-content">
-                        <Route to='/dialogs' render={() => <Dialogs state={dialogsPage}/>}/> {/*Variant 1*/}
-                        {/*<Route path='/profile' render={() => <Profile state={profilePage}/>}/>*/}
-                        <Route path='/profile'> <Profile state={profilePage}/></Route> {/*Variant 2*/}
-                        <Route path='/news' component={News}/> {/*Variant 3*/}
-                        <Route path='/settings' component={Settings}/>
-                        <Route path='/music' component={Music}/>
+
+            <div className="app-wrapper">
+                <Header/>
+                <Nav nav={nav}/>
+                <div className="app-wrapper-content">
+                    <Route to='/dialogs' render={() => <Dialogs state={dialogsPage}/>}/> {/*Variant 1*/}
+                    {/*<Route path='/profile' render={() => <Profile state={profilePage}/>}/>*/}
+                    <Route path='/profile'> <Profile state={profilePage}/></Route> {/*Variant 2*/}
+                    <Route path='/news' component={News}/> {/*Variant 3*/}
+                    <Route path='/settings' component={Settings}/>
+                    <Route path='/music' component={Music}/>
 
 
-                    </div>
-                    {/*  <Footer /> */}
                 </div>
-            </BrowserRouter>
+                {/*  <Footer /> */}
+            </div>
         );
     }
 }
