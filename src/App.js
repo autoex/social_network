@@ -11,6 +11,7 @@ import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import {Route} from "react-router-dom";
 
+
 // import Footer from "./components/Footer/Footer";
 
 class App extends React.Component {
