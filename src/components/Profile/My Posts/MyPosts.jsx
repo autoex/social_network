@@ -10,9 +10,11 @@ class MyPosts extends React.Component {
         let postsElements = posts.map(p => <Post message={p.message} likes={p.likesCount}/>);
         let newPostElement = React.createRef();
         let addPost = () => {
+            debugger;
             let text = newPostElement.current.value;
-            alert(text);
+            this.props.addPost(text);
         }
+
 
         return (
             <div className={classes.myPosts}>

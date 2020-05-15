@@ -12,7 +12,8 @@ class Profile extends React.Component {
             <div>
                 <ProfileInfo/>
 
-                <MyPosts posts={posts}/>
+                <MyPosts posts={posts} addPost={this.props.addPost}/>
+
             </div>
         );
     }
