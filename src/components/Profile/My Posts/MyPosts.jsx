@@ -10,10 +10,10 @@ class MyPosts extends React.Component {
         let postsElements = posts.map(p => <Post message={p.message} likes={p.likesCount}/>);
         let newPostElement = React.createRef();
         let addPost = () => {
-            debugger;
             let text = newPostElement.current.value;
             this.props.addPost(text);
-        }
+            newPostElement.current.value = '';
+        };
 
 
         return (
@@ -22,7 +22,7 @@ class MyPosts extends React.Component {
                 <div>
                     <div>
                         <textarea ref={newPostElement}>
-                            Some text here...
+
                         </textarea>
                     </div>
 

@@ -7,10 +7,13 @@
 .nav a {
     color: #285473;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .nav a.active {
     color: cadetblue;
+    text-decoration: none!important;
+    cursor: text!important;
 }
 
 .nav a:hover {
