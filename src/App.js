@@ -27,7 +27,7 @@ class App extends React.Component {
                 <div className="app-wrapper-content">
                     <Route path='/dialogs' render={() => <Dialogs state={dialogsPage}/>}/> {/*Variant 1*/}
                     {/*<Route path='/profile' render={() => <Profile state={profilePage}/>}/>*/}
-                    <Route path='/profile'> <Profile profilePage={profilePage} addPost={this.props.addPost} updateNewPostText={this.props.updateNewPostText} /></Route> {/*Variant 2*/}
+                    <Route path='/profile'> <Profile profilePage={profilePage} dispatch={this.props.dispatch} /></Route> {/*Variant 2*/}
 
 
                     <Route path='/news' component={News}/> {/*Variant 3*/}

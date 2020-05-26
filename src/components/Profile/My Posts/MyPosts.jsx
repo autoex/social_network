@@ -10,12 +10,14 @@ class MyPosts extends React.Component {
         let postsElements = posts.map(p => <Post message={p.message} likes={p.likesCount}/>);
         let newPostElement = React.createRef();
         let addPost = () => {
-            this.props.addPost();
+
+            this.props.dispatch({type: 'ADD-POST'});
         };
 
         let onPostChange =()=> {
+            debugger;
             let text = newPostElement.current.value;
-             this.props.updateNewPostText(text);
+             this.props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text});
         };
 
 
