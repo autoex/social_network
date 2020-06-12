@@ -1,3 +1,7 @@
+const ADD_NEW_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
+
 let store = {
     _state: {
         nav: {
@@ -79,6 +83,14 @@ let store = {
 
 
 };
+
+export const addPostActionCreator = () => ({
+        type: ADD_NEW_POST
+    });
+
+export const updateNewPostTextActionCreator = (text) => ({
+        type: UPDATE_NEW_POST_TEXT, newText: text
+    });
 
 
 window.store = store;
