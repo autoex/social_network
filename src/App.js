@@ -14,32 +14,34 @@ import {Route} from "react-router-dom";
 
 // import Footer from "./components/Footer/Footer";
 
-class App extends React.Component {
-    render() {
-        let nav = this.props.state.nav;
-        let dialogsPage = this.props.state.dialogsPage;
-        let profilePage = this.props.state.profilePage;
-        return (
+const App = (props) => {
 
-            <div className="app-wrapper">
-                <Header/>
-                <Nav nav={nav}/>
-                <div className="app-wrapper-content">
-                    <Route path='/dialogs' render={() => <Dialogs state={dialogsPage} store={this.props.store}/>}/> {/*Variant 1*/}
-                    {/*<Route path='/profile' render={() => <Profile state={profilePage}/>}/>*/}
-                    <Route path='/profile'> <Profile profilePage={profilePage} dispatch={this.props.dispatch} /></Route> {/*Variant 2*/}
+    let nav = props.state.nav;
+    let dialogsPage = props.state.dialogsPage;
+    let profilePage = props.state.profilePage;
+    return (
 
-
-                    <Route path='/news' component={News}/> {/*Variant 3*/}
-                    <Route path='/settings' component={Settings}/>
-                    <Route path='/music' component={Music}/>
+        <div className="app-wrapper">
+            <Header/>
+            <Nav nav={nav}/>
+            <div className="app-wrapper-content">
+                <Route path='/dialogs'
+                       render={() => <Dialogs state={dialogsPage} store={props.store}/>}/> {/*Variant 1*/}
+                {/*<Route path='/profile' render={() => <Profile state={profilePage}/>}/>*/}
+                <Route path='/profile'> <Profile profilePage={profilePage}
+                                                 dispatch={props.dispatch}/></Route> {/*Variant 2*/}
 
 
-                </div>
-                {/*  <Footer /> */}
+                <Route path='/news' component={News}/> {/*Variant 3*/}
+                <Route path='/settings' component={Settings}/>
+                <Route path='/music' component={Music}/>
+
+
             </div>
-        );
-    }
-}
+            {/*  <Footer /> */}
+        </div>
+    );
+
+};
 
 export default App;

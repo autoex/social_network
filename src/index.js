@@ -8,7 +8,6 @@ import store from './redux/state';
 import * as serviceWorker from './serviceWorker';
 
 
-
 export let renderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>

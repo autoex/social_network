@@ -2,13 +2,12 @@ import React from "react";
 import classes from "./Nav.module.css";
 import {NavLink} from "react-router-dom";
 
-class Nav extends React.Component {
-    render() {
-        let nav = this.props.nav;
-        return (
-            <nav className={classes.nav}>
-                <ul>
-                   {/* <li>
+const Nav = (props) => {
+    let nav = props.nav;
+    return (
+        <nav className={classes.nav}>
+            <ul>
+                {/* <li>
                         <NavLink to="/profile">Profile</NavLink>
                     </li>
                     <li>
@@ -23,15 +22,15 @@ class Nav extends React.Component {
                     <li>
                         <NavLink to="/settings">Settings</NavLink>
                     </li>*/}
-                    {Object.keys(nav).map(el => (
-                      <li>
+                {Object.keys(nav).map(el => (
+                    <li>
                         <NavLink to={nav[el]} activeClassName={classes.active}>{el.toUpperCase()}</NavLink>
-                      </li>
-                    ))}
-                </ul>
-            </nav>
-        );
-    }
-}
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    );
+
+};
 
 export default Nav;

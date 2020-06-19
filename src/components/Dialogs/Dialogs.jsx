@@ -4,53 +4,54 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
 
-class Dialogs extends React.Component {
-    render() {
-        debugger;
-        let state = this.props.store.getState().dialogsPage;
+const Dialogs = (props) => {
 
-        let dialogs = state.dialogs;
-        let messages = state.messages;
+    let state = props.store.getState().dialogsPage;
 
-        let dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
+    let dialogs = state.dialogs;
+    let messages = state.messages;
 
-        let messagesElements = messages.map(m => <Message message={m.message}/>);
-        let newMessageBody = this.props.state.newMessageText;
+    let dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
 
-        let onSendMessageClick =()=> {
-            this.props.store.dispatch(sendMessageCreator());
+    let messagesElements = messages.map(m => <Message message={m.message}/>);
+    let newMessageBody = props.state.newMessageText;
 
-        }
+    let onSendMessageClick = () => {
+        props.store.dispatch(sendMessageCreator());
 
-        let onNewMessageChange =(e)=> {
+    };
 
-            let body = e.target.value;
-            this.props.store.dispatch(updateNewMessageBodyCreator(body));
+    let onNewMessageChange = (e) => {
+
+        let body = e.target.value;
+        props.store.dispatch(updateNewMessageBodyCreator(body));
 
 
-        }
+    };
 
-        return (
-            <div className={classes.dialogs}>
+    return (
+        <div className={classes.dialogs}>
 
-                <div className={classes.dialogs_items}>
-                    {dialogsElements}
-                </div>
-                <div className={classes.messages}>
-                    {messagesElements}
-                </div>
-                <div></div>
+            <div className={classes.dialogs_items}>
+                {dialogsElements}
+            </div>
+            <div className={classes.messages}>
+                {messagesElements}
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+                <div><textarea value={newMessageBody} onChange={onNewMessageChange}/></div>
                 <div>
-
-                    <div><textarea value={newMessageBody} onChange={onNewMessageChange}></textarea></div>
-                    <div>
-                        <button onClick={onSendMessageClick}>Send</button>
-                    </div>
+                    <button onClick={onSendMessageClick}>Send</button>
                 </div>
             </div>
+        </div>
 
-        );
-    }
-}
+    );
+
+};
 
 export default Dialogs;
