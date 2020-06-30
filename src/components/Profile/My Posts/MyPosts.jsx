@@ -7,8 +7,6 @@ import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../red
 const MyPosts = (props) => {
 
     let posts = props.posts;
-
-
     let postsElements = posts.map(p => <Post message={p.message} likes={p.likesCount}/>);
     let newPostElement = React.createRef();
     let addPost = () => {
@@ -28,6 +26,7 @@ const MyPosts = (props) => {
             <div>
                 <div>
                     <textarea ref={newPostElement} value={props.newPostText} onChange={onPostChange}/>
+
 
 
                 </div>
