@@ -2,11 +2,6 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
-const ADD_NEW_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_BODY ='UPDATE-NEW-MESSAGE-BODY';
-const SEND_MESSAGE = 'SEND-MESSAGE';
-
 
 let store = {
     _state: {
@@ -26,7 +21,7 @@ let store = {
                 {id: 2, message: 'Cat get your tongue', likesCount: 23}
             ],
 
-            newPostText: 'Type here...'
+            newPostText: ''
         },
 
 
@@ -44,7 +39,7 @@ let store = {
                 {id: 3, message: 'Thanks. I\'m fine'},
                 {id: 4, message: 'And you?'}
             ],
-            newMessageText : 'Hello Dude!'
+            newMessageText: ''
         }
 
 
@@ -71,14 +66,7 @@ let store = {
     }
 
 
-
-
-
 };
-
-
-
-
 
 
 window.store = store;
