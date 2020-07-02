@@ -15,7 +15,7 @@ import {Route} from "react-router-dom";
 // import Footer from "./components/Footer/Footer";
 
 const App = (props) => {
-
+debugger;
     let nav = props.state.nav;
     let dialogsPage = props.state.dialogsPage;
     let profilePage = props.state.profilePage;
@@ -23,6 +23,7 @@ const App = (props) => {
 
         <div className="app-wrapper">
             <Header/>
+            {/*<Nav/>*/}
             <Nav nav={nav}/>
             <div className="app-wrapper-content">
                 <Route path='/dialogs'
