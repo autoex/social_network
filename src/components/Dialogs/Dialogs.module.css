@@ -13,8 +13,17 @@
 }
 .dialogs_items .dialog a {
     color: #222;
-    font-weight: 500;
 }
+.dialogs_items .dialog a:hover {
+    color: #006062;
+    font-weight: 500;
+    text-decoration: none;
+}
+.dialogs_items .dialog a.active {
+
+    font-weight: bold;
+}
+
 .dialogs_items .dialog:nth-child(1), .message:nth-child(1) {
     padding-top: 0;
 }
