@@ -8,22 +8,22 @@ const MyPostsContainer = () => {
 
 
     return (
-        <StoreContext.Consumer>{
-            (store) => {
-                let state = store.getState().profilePage;
-                let addPost = () => {
+        <StoreContext.Consumer>
+            {(store) => {
+            let state = store.getState().profilePage;
+            let addPost = () => {
 
-                    store.dispatch(addPostActionCreator());
-                };
+                store.dispatch(addPostActionCreator());
+            };
 
-                let onPostChange = (text) => {
-                    store.dispatch(updateNewPostTextActionCreator(text));
-                };
+            let onPostChange = (text) => {
+                store.dispatch(updateNewPostTextActionCreator(text));
+            };
 
 
-                return <MyPosts addPost={addPost} onPostChange={onPostChange} posts={state.posts}
-                                newPostText={state.newPostText}/>
-            }
+            return <MyPosts addPost={addPost} onPostChange={onPostChange} posts={state.posts}
+                            newPostText={state.newPostText}/>
+        }
         }
         </StoreContext.Consumer>
     );

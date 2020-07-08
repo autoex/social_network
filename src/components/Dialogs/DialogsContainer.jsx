@@ -7,8 +7,8 @@ const DialogsContainer = () => {
 
 
     return (
-        <StoreContext.Consumer>{
-            (store) => {
+        <StoreContext.Consumer>
+            {(store) => {
                 let state = store.getState().dialogsPage;
 
 

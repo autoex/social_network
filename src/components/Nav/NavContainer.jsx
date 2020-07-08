@@ -7,10 +7,10 @@ const NavContainer = () => {
     return (
         <StoreContext.Consumer>
 
-            {(store) =>
-           {    let nav = store.getState().nav;
-               return <Nav nav={nav}/>
-           }}
+            {(store) => {
+                let nav = store.getState().nav;
+                return <Nav nav={nav}/>
+            }}
         </StoreContext.Consumer>
 
     );
