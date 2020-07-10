@@ -1,8 +1,7 @@
-import React from "react";
-import StoreContext from "../../StoreContext";
 import Nav from "./Nav";
+import {connect} from "react-redux";
 
-const NavContainer = () => {
+/*const NavContainer = () => {
 
     return (
         <StoreContext.Consumer>
@@ -15,6 +14,13 @@ const NavContainer = () => {
 
     );
 
+};*/
+let mapStateToProps = (state) => {
+    return {
+        nav: state.nav
+    }
+
 };
 
+const NavContainer = connect(mapStateToProps)(Nav);
 export default NavContainer;
