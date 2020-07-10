@@ -9,8 +9,7 @@ import {Provider} from "react-redux";
 
 
 
-export let renderEntireTree = () => {
-    debugger;
+
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
@@ -21,12 +20,7 @@ export let renderEntireTree = () => {
         </React.StrictMode>,
         document.querySelector('#root')
     );
-};
 
-renderEntireTree();
-store.subscribe(() => {
-    renderEntireTree()
-});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -5,7 +5,7 @@ let initState = {
     messages: '/dialogs',
     news: '/news',
     music: '/music',
-    settings: '/settings'
+    settings: '/settings',
 
 };
 
