@@ -26,7 +26,7 @@ const Nav = (props) => {
                     </li>*/}
                         {Object.keys(nav).map(el => (
                             <li>
-                                <NavLink to={nav[el]} activeClassName={classes.active}>{el.toUpperCase()}</NavLink>
+                                <NavLink to={nav[el]} activeClassName={classes.active} key={el}>{el.toUpperCase() }</NavLink>
                             </li>
                         ))}
                     </ul>

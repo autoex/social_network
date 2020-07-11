@@ -3,11 +3,11 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let initState = {
     dialogs: [
-        {id: 1, name: 'Dimich'},
+        {id: 1, name: 'Ann'},
         {id: 2, name: 'Andrew'},
         {id: 3, name: 'Margo'},
         {id: 4, name: 'Ralf'},
-        {id: 5, name: 'Kimi'},
+        {id: 5, name: 'Ron'},
     ],
     messages: [
         {id: 1, message: 'Hi'},
@@ -19,17 +19,19 @@ let initState = {
 };
 
 const dialogsReducer = (state = initState, action) => {
-
+    let stateCopy = {
+        ...state,
+        //messages: [...state.messages]
+    };
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY: {
-            let stateCopy = {...state};
+
             stateCopy.newMessageText = action.body;
             return stateCopy;
         }
 
         case SEND_MESSAGE: {
-            let stateCopy = {...state};
-            let body = stateCopy.newMessageText;
+            let body = state.newMessageText;
             stateCopy.newMessageText = ' ';
             stateCopy.messages.push({id: 5, message: body});
             return stateCopy;
