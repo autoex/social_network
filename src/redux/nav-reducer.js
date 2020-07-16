@@ -3,6 +3,7 @@
 let initState = {
     profile: '/profile',
     messages: '/dialogs',
+    users: '/users',
     news: '/news',
     music: '/music',
     settings: '/settings',
