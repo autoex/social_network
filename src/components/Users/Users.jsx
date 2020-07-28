@@ -9,10 +9,10 @@ let Users = (props) => {
 
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(
-
                 response => {
                     debugger;
-                    props.setUsers(response.data.items)});
+                    props.setUsers(response.data.items)
+                });
 
     }
     return (
@@ -21,7 +21,8 @@ let Users = (props) => {
         <div>
             {props.users.map(u => <div key={u.id} className={classes.userWrapper}>
                 <div>
-                    <div><img src={u.photos.small != null ? u.photos.small : userPhoto} alt="" className={classes.userPhoto}/></div>
+                    <div><img src={u.photos.small != null ? u.photos.small : userPhoto} alt=""
+                              className={classes.userPhoto}/></div>
 
                     {u.followed ?
                         <button onClick={() => {
