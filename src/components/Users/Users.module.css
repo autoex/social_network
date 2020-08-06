@@ -8,3 +8,19 @@
 .userPhoto {
   width: 75px;
 }
+.pagination {
+  padding: 5px;
+}
+
+.pagination ul {
+  display: flex;
+  justify-content: center;
+}
+.pagination ul li {
+  padding: 0 2px;
+  cursor: pointer;
+}
+.pagination li.selectedPage {
+  font-weight: bold;
+  cursor: text;
+}
