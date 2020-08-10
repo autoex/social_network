@@ -20,7 +20,7 @@ class UsersAPIComponent extends React.Component {
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(
-                response => {
+                (response) => {
                     this.props.setUsers(response.data.items)
                 });
 

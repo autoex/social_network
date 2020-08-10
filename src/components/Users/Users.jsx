@@ -5,9 +5,7 @@ import userPhoto from "../../assets/images/user.png";
 let Users = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    debugger;
     let pages = [];
-    debugger;
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
