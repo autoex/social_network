@@ -43,16 +43,16 @@ class UsersComponent extends React.Component {
 
 
         return <>
-            {this.props.isFetching && <Preloader />}
+            {this.props.isFetching && <Preloader/>}
             <Users totalUsersCount={this.props.totalUsersCount}
-                      pageSize={this.props.pageSize}
-                      currentPage={this.props.currentPage}
-                      users={this.props.users}
-                      onPageChange={this.onPageChange}
-                      follow={this.props.follow}
-                      unFollow={this.props.unFollow}
-        />
-</>
+                   pageSize={this.props.pageSize}
+                   currentPage={this.props.currentPage}
+                   users={this.props.users}
+                   onPageChange={this.onPageChange}
+                   follow={this.props.follow}
+                   unFollow={this.props.unFollow}
+            />
+        </>
 
     }
 
@@ -70,27 +70,35 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        follow: (userID)=> {
+        follow: (userID) => {
             dispatch(followAC(userID))
         },
-        unFollow: (userID)=> {
+        unFollow: (userID) => {
             dispatch(unFollowAC(userID))
         },
-        setUsers: (users)=> {
+        setUsers: (users) => {
             dispatch(setUsersAC(users))
         },
-        setCurrentPage: (pageNumber)=> {
+        setCurrentPage: (pageNumber) => {
             dispatch(setCurrentPageAC(pageNumber))
         },
-        setTotalUsersCount: (totalUsers)=> {
+        setTotalUsersCount: (totalUsers) => {
             dispatch(setTotalUsersCountAC(totalUsers))
         },
-        toggleIsFetching: (isFetching)=> {
+        toggleIsFetching: (isFetching) => {
             dispatch(toggleIsFetchingAC(isFetching))
         }
     }
 };
 
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersComponent);
+const UsersContainer = connect(mapStateToProps, {
+    follow: followAC,
+    unFollow: unFollowAC,
+    setUsers: setUsersAC,
+    setCurrentPage: setCurrentPageAC,
+    setTotalUsersCount: setTotalUsersCountAC,
+    toggleIsFetching: toggleIsFetchingAC
+
+})(UsersComponent);
 export default UsersContainer;
