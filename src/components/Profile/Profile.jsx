@@ -3,17 +3,16 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./My Posts/MyPostsContainer";
 
 
-const Profile =()=> {
+const Profile = (props) => {
 
 
-        return (
-            <div>
-                <ProfileInfo/>
+    return (
+        <>
+            <ProfileInfo profile={props.profile}/>
+            <MyPostsContainer/>
+        </>
 
-                <MyPostsContainer />
-
-            </div>
-        );
+    );
 
 };
 
