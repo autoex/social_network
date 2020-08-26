@@ -35,12 +35,12 @@ let Users = (props) => {
                 </div>
 
                 {u.followed ?
-                    <button onClick={() => {
-
+                    <button disabled={props.followingInProgress} onClick={() => {
+                        props.toggleFollowingProgress(true);
                         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                             withCredentials: true,
                             headers: {
-                                'API-KEY' : '7fc68edd-bf2c-4451-96db-e360a4c247b3'
+                                'API-KEY': '7fc68edd-bf2c-4451-96db-e360a4c247b3'
                             }
                         })
                             .then(
@@ -48,17 +48,19 @@ let Users = (props) => {
                                     if (response.data.resultCode === 0) {
                                         props.unFollow(u.id);
                                     }
-
+                                    props.toggleFollowingProgress(false);
                                 });
 
 
-
                     }}>Unfollow</button> :
-                    <button onClick={() => {
+                    <button disabled={props.followingInProgress} onClick={() => {
+                        debugger
+                        props.toggleFollowingProgress(true);
+
                         axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                             withCredentials: true,
                             headers: {
-                                'API-KEY' : '7fc68edd-bf2c-4451-96db-e360a4c247b3'
+                                'API-KEY': '7fc68edd-bf2c-4451-96db-e360a4c247b3'
                             }
                         })
                             .then(
@@ -66,7 +68,7 @@ let Users = (props) => {
                                     if (response.data.resultCode === 0) {
                                         props.follow(u.id);
                                     }
-
+                                    props.toggleFollowingProgress(false);
                                 });
 
 
