@@ -5,17 +5,18 @@ import {
     setTotalUsersCount,
     setUsers, toggleFollowingProgress,
     toggleIsFetching,
-    unFollow
+    unFollow,
+    getUsers
 } from "../../redux/users-reducer";
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import usersAPI from "../../API/api";
+
 
 
 class UsersComponent extends React.Component {
 
-    componentDidMount() {
+    componentDidMount() {/*
         this.props.toggleIsFetching(true);
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
             .then(
@@ -23,10 +24,12 @@ class UsersComponent extends React.Component {
                     this.props.toggleIsFetching(false);
                     this.props.setUsers(response.items);
                     this.props.setTotalUsersCount(response.totalCount);
-                });
+                });*/
+
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     };
 
-    onPageChange = (pageNumber) => {
+    onPageChange = (pageNumber) => {/*
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
@@ -34,8 +37,9 @@ class UsersComponent extends React.Component {
                 response => {
                     this.props.toggleIsFetching(false);
                     this.props.setUsers(response.items)
-                });
+                });*/
 
+        this.props.getUsers(pageNumber, this.props.pageSize)
     };
 
 
@@ -51,7 +55,6 @@ class UsersComponent extends React.Component {
                onPageChange={this.onPageChange}
                follow={this.props.follow}
                unFollow={this.props.unFollow}
-               toggleFollowingProgress={this.props.toggleFollowingProgress}
                followingInProgress={this.props.followingInProgress}
         />
     </>
@@ -102,7 +105,8 @@ const UsersContainer = connect(mapStateToProps, {
     setCurrentPage,
     setTotalUsersCount,
     toggleIsFetching,
-    toggleFollowingProgress
+    toggleFollowingProgress,
+    getUsers
 
 })(UsersComponent);
 export default UsersContainer;
