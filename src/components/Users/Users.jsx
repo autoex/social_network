@@ -16,9 +16,11 @@ let Users = (props) => {
         <div className={classes.pagination}>
             <ul>
                 {pages.map(el => {
+
                     return <li className={props.currentPage === el && classes.selectedPage} onClick={() => {
                         props.onPageChange(el)
                     }}>{el}</li>
+
                 })}
             </ul>
         </div>
@@ -41,7 +43,6 @@ let Users = (props) => {
                     <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
 
                         props.follow(u.id);
-
 
 
                     }}>Follow</button>}
