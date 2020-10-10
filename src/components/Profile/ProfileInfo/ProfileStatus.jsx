@@ -14,18 +14,18 @@ class ProfileStatus extends React.Component {
 
     };
 
-    statusChange(e) {
+    statusChange = (e) => {
         let txt = e.target.value;
         this.setState({
             status: txt
         })
-    }
+    };
 
     render() {
         return <div>
             {this.state.editMode ?
                 <div><input autoFocus={true} type={'text'} value={this.state.status}
-                            onChange={this.statusChange.bind(this)} onBlur={this.editModeToggle}/></div> :
+                            onChange={this.statusChange} onBlur={this.editModeToggle}/></div> :
                 <div onDoubleClick={this.editModeToggle}>{this.state.status}</div>}
 
 
