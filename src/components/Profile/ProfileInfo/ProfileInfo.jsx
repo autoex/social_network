@@ -2,12 +2,14 @@ import React from "react";
 import classes from "./Profileinfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import UserImg from "../../../assets/images/user.png"
+import ProfileStatus from "./ProfileStatus";
 
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
+
     return (
 
         <div>
@@ -21,6 +23,7 @@ const ProfileInfo = (props) => {
                 <div>
                     <img className={classes.userImg} src={props.profile.photos.large ? props.profile.photos.large : UserImg} alt=""/>
                 </div>
+                <ProfileStatus />
                 <div>Full name: {props.profile.fullName}</div>
             </div>
 
