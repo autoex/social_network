@@ -11,6 +11,7 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
+import {compose} from "redux";
 
 
 
@@ -98,7 +99,7 @@ let mapStateToProps = (state) => {
 };*/
 
 
-const UsersContainer = connect(mapStateToProps, {
+/*const UsersContainer = connect(mapStateToProps, {
     follow,
     unFollow,
     setUsers,
@@ -109,4 +110,19 @@ const UsersContainer = connect(mapStateToProps, {
     getUsers
 
 })(UsersComponent);
-export default UsersContainer;
+export default UsersContainer;*/
+
+
+export default compose(
+    connect(mapStateToProps, {
+        follow,
+        unFollow,
+        setUsers,
+        setCurrentPage,
+        setTotalUsersCount,
+        toggleIsFetching,
+        toggleFollowingProgress,
+        getUsers
+
+    })
+)(UsersComponent);
