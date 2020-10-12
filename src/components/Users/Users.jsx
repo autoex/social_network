@@ -15,9 +15,9 @@ let Users = (props) => {
     return <div>
         <div className={classes.pagination}>
             <ul>
-                {pages.map(el => {
+                {pages.map((el, index) => {
 
-                    return <li className={props.currentPage === el && classes.selectedPage} onClick={() => {
+                    return <li key={index} className={props.currentPage === el ? classes.selectedPage : undefined} onClick={() => {
                         props.onPageChange(el)
                     }}>{el}</li>
 

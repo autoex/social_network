@@ -24,8 +24,8 @@ const Nav = (props) => {
                     <li>
                         <NavLink to="/settings">Settings</NavLink>
                     </li>*/}
-                        {Object.keys(nav).map(el => (
-                            <li>
+                        {Object.keys(nav).map((el, index) => (
+                            <li key={index}>
                                 <NavLink to={nav[el]} activeClassName={classes.active} key={el}>{el.toUpperCase() }</NavLink>
                             </li>
                         ))}
