@@ -1,5 +1,4 @@
 import {
-    onNewMessageChange,
     onSendMessageClick
 } from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
@@ -34,6 +33,6 @@ const DialogsContainer = connect(mapStateToProps, {onSendMessageClick, onNewMess
 export default DialogsContainer;*/
 
 export default compose(
-    connect(mapStateToProps, {onSendMessageClick, onNewMessageChange}),
+    connect(mapStateToProps, {onSendMessageClick}),
     WithAuthRedirect
 )(Dialogs);
