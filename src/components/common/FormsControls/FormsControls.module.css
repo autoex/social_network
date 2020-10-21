@@ -14,3 +14,8 @@
     left: 0;
     bottom: 0;
 }
+.errorForm {
+    font-size: 10px;
+    color: red;
+
+}
