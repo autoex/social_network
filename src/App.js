@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import "./Style.css";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
@@ -10,41 +10,50 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
+import {connect} from "react-redux";
+import {getAuthUserData} from "./redux/auth-reducer";
 
 
+class App extends Component {
+    componentDidMount() {
+        this.props.getAuthUserData();
+    }
 
-const App = () => {
-
-
-    return (
-
-        <div className="app-wrapper">
-            <HeaderContainer/>
-            <NavContainer />
-            <div className="app-wrapper-content">
-                <Route path='/dialogs'
-                       render={() => <DialogsContainer />}/> {/*Variant 1*/}
-                {/*<Route path='/profile' render={() => <Profile state={profilePage}/>}/>*/}
+    render() {
 
 
-                <Route path='/profile/:userId?'> <ProfileContainer /></Route> {/*Variant 2*/}
+        return (
+
+            <div className="app-wrapper">
+                <HeaderContainer/>
+                <NavContainer/>
+                <div className="app-wrapper-content">
+                    <Route path='/dialogs'
+                           render={() => <DialogsContainer/>}/> {/*Variant 1*/}
+                    {/*<Route path='/profile' render={() => <Profile state={profilePage}/>}/>*/}
 
 
-
-                <Route path='/users'
-                       render={() => <UsersContainer/>}/>
-
-                <Route path='/news' component={News}/> {/*Variant 3*/}
-                <Route path='/settings' component={Settings}/>
-                <Route path='/music' component={Music}/>
-                <Route path='/login' component={Login}/>
+                    <Route path='/profile/:userId?'> <ProfileContainer/></Route> {/*Variant 2*/}
 
 
+                    <Route path='/users'
+                           render={() => <UsersContainer/>}/>
+
+                    <Route path='/news' component={News}/> {/*Variant 3*/}
+                    <Route path='/settings' component={Settings}/>
+                    <Route path='/music' component={Music}/>
+                    <Route path='/login' component={Login}/>
+
+
+                </div>
+                {/*  <Footer /> */}
             </div>
-            {/*  <Footer /> */}
-        </div>
-    );
+        );
 
-};
+    }
+}
 
-export default App;
+
+
+
+export default connect(null, {getAuthUserData})(App);
