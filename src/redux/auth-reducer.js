@@ -17,7 +17,7 @@ const authReducer = (state = initState, action) => {
     switch (action.type) {
 
         case SET_USER_DATA:
-            return  {
+            return {
                 ...state,
                 ...action.data
             };
@@ -31,13 +31,13 @@ const authReducer = (state = initState, action) => {
 
 };
 
-const setAuthUserData = (userId, email, login , isAuth) => ({type: SET_USER_DATA, data: {userId, email, login, isAuth}});
-export const getAuthUserData = () => (dispatch)=> {
+const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA, data: {userId, email, login, isAuth}});
+export const getAuthUserData = () => (dispatch) => {
 
-   return  authAPI.me()
+    return authAPI.me()
         .then(
             response => {
-                if(response.data.resultCode === 0) {
+                if (response.data.resultCode === 0) {
                     let {id, email, login} = response.data.data;
                     dispatch(setAuthUserData(id, email, login, true));
                 }
@@ -46,40 +46,34 @@ export const getAuthUserData = () => (dispatch)=> {
 
 };
 
-export const login = (email, password, rememberMe) => (dispatch)=> {
+export const login = (email, password, rememberMe) => async (dispatch) => {
 
-    authAPI.login(email, password, rememberMe)
-        .then(
-            response => {
-                if(response.data.resultCode === 0) {
-                    dispatch(getAuthUserData());
-                }
-                else {
-                    let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : 'Some data is wrong';
-                    debugger
-                    dispatch(stopSubmit('login', {_error: errorMessage}));
-                }
-            });
+    const response = await authAPI.login(email, password, rememberMe);
+
+    if (response.data.resultCode === 0) {
+        dispatch(getAuthUserData());
+    } else {
+        let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : 'Some data is wrong';
+        debugger
+        dispatch(stopSubmit('login', {_error: errorMessage}));
+    }
 
 
 };
 
 
-export const logout = () => (dispatch)=> {
+export const logout = () => async (dispatch) => {
 
 
-    authAPI.logout()
-        .then(
-            response => {
-                if(response.data.resultCode === 0) {
-                    dispatch(dispatch(setAuthUserData(null, null, null, false)));
-                }
-            });
+    const response = await authAPI.logout();
+
+
+    if (response.data.resultCode === 0) {
+        dispatch(dispatch(setAuthUserData(null, null, null, false)));
+    }
 
 
 };
-
-
 
 
 export default authReducer;

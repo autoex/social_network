@@ -43,7 +43,6 @@ const profileReducer = (state = initState, action) => {
         }
 
 
-
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
@@ -74,36 +73,33 @@ const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 
 const setStatus = (status) => ({type: SET_STATUS, status});
 
-export const getUserProfile = (userId) => (dispatch) => {
+export const getUserProfile = (userId) => async (dispatch) => {
 
-    usersAPI.getProfile(userId)
-        .then(
-            response => {
+    const response = await usersAPI.getProfile(userId);
 
-                dispatch(setUserProfile(response.data));
-            });
+
+    dispatch(setUserProfile(response.data));
+
 
 };
 
 
-export const getUserStatus = (userId) => (dispatch) => {
+export const getUserStatus = (userId) => async (dispatch) => {
 
-    profileAPI.getStatus(userId)
-        .then(
-            response => {
-                dispatch(setStatus(response.data));
-            });
+    const response = await profileAPI.getStatus(userId);
+
+    dispatch(setStatus(response.data));
+
 
 };
-export const updateUserStatus = (status) => (dispatch) => {
+export const updateUserStatus = (status) => async (dispatch) => {
 
-    profileAPI.updateStatus(status)
-        .then(
-            response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setStatus(status));
-                }
-            });
+    const response = await profileAPI.updateStatus(status);
+
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status));
+    }
+
 
 };
 
