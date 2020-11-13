@@ -2,12 +2,12 @@ import React from "react";
 import classes from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
-import Paginator from "./Paginator";
+import Paginator from "../common/Paginator/Paginator";
 
-let Users = (props) => {
+let Users = ({totalUsersCount, pageSize, currentPage, selectedPage, onPageChange, ...props}) => {
 
     return <div>
-        <Paginator {...props}/>
+        <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} selectedPage={selectedPage} onPageChange={onPageChange} />
         {props.users.map(u => <div key={u.id} className={classes.userWrapper}>
             <div>
                 <div>
