@@ -23,20 +23,17 @@ let initState = {
 const usersReducer = (state = initState, action) => {
 
     switch (action.type) {
-        case "FAKE":
-            return {
-                ...state, fake: state.fake + 1
-            };
+
         case FOLLOW:
             return {
                 ...state,
                 // users: updateObjInArray(state.users, action.userID,  {followed: true})
-                 users: state.users.map(u => {
-                     if (u.id === action.userID) {
-                         return {...u, followed: true}
-                     }
-                     return u;
-                 })
+                users: state.users.map(u => {
+                    if (u.id === action.userID) {
+                        return {...u, followed: true}
+                    }
+                    return u;
+                })
             };
 
         case UNFOLLOW:
