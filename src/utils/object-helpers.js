@@ -6,4 +6,5 @@ export const updateObjInArray = (items, itemId,  newObjProps) => {
 
         return u;
     })
+
 };

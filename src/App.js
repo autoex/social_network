@@ -3,7 +3,7 @@ import "./Style.css";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
-import {Route, Switch, withRouter} from "react-router-dom";
+import {BrowserRouter, Route, Switch, withRouter} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavContainer from "./components/Nav/NavContainer";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -15,6 +15,8 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import store from "./redux/redux-store";
+import {Provider} from "react-redux";
 
 
 class App extends Component {
@@ -63,6 +65,22 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default compose(
+const AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App);
+
+
+
+const CircleApp = ()=> {
+
+    return <React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <AppContainer/>
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>
+
+};
+
+export default CircleApp;
