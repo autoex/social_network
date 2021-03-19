@@ -17,6 +17,7 @@ import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
 import {Provider} from "react-redux";
+import ExperimentalContainer from "./components/Experimental/ExperimentalContainer";
 
 
 class App extends Component {
@@ -49,6 +50,7 @@ class App extends Component {
                         <Route path='/settings' component={Settings}/>
                         <Route path='/music' component={Music}/>
                         <Route path='/login' component={Login}/>
+                        <Route path='/experimental' component={ExperimentalContainer}/>
                         <Route component={Error}/>
                     </Switch>
 
