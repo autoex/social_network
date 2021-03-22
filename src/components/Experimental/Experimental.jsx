@@ -10,9 +10,13 @@ class Experimental extends Component {
     }
 
     getUsers = async (pageNumber) => {
-        let users = await axios(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.expPage.pageSize}`);
+        // let users = await axios(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.expPage.pageSize}`);
+        let allUsersArray = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items`);
+        let totalUsersCount = allUsersArray.data.length;
+        let users = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items?_page=${pageNumber}&_limit=${this.props.expPage.pageSize}`);
 
-        this.props.getUsers(users.data.items, users.data.totalCount);
+        this.props.setTotalUsers(totalUsersCount);
+        this.props.getUsers(users.data);
 
     };
 
@@ -30,8 +34,8 @@ class Experimental extends Component {
     }
 
     render() {
-        // let pagesNumber = Math.ceil(this.props.expPage.totalCount / this.props.expPage.pageSize);
-        let pagesNumber = 11;
+        let pagesNumber = Math.ceil(this.props.expPage.totalCount / this.props.expPage.pageSize);
+        // let pagesNumber = 11;
         let pages = [];
         for(let i =1; i<=pagesNumber; i++ ) {
             pages.push(i)
