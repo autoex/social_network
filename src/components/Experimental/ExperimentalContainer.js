@@ -1,6 +1,14 @@
 import Experimental from "./Experimental";
 import {connect} from "react-redux";
-import {activePageAC, followAC, getPostsAC, getUsersAC, setTotalUsersAC, unFollowAC} from "../../redux/exp-reducer";
+import {
+    activePageAC,
+    followAC,
+    getPostsAC,
+    getUsersAC,
+    inProgressAC,
+    setTotalUsersAC,
+    unFollowAC
+} from "../../redux/exp-reducer";
 import React, {Component} from "react";
 import axios from "axios";
 
@@ -14,6 +22,7 @@ class ExperimentalContainer extends Component {
     }
 
     getUsers = async (pageNumber) => {
+        this.props.inProgress(true);
         // let users = await axios(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.expPage.pageSize}`);
         let allUsersArray = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items`);
         let totalUsersCount = allUsersArray.data.length;
@@ -21,6 +30,7 @@ class ExperimentalContainer extends Component {
 
         this.props.setTotalUsers(totalUsersCount);
         this.props.getUsers(users.data);
+        this.props.inProgress(false);
 
     };
 
@@ -94,6 +104,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     unFollow: (idUser) => {
         dispatch(unFollowAC(idUser))
+    },
+    inProgress: (status) => {
+        dispatch(inProgressAC(status))
     }
 
 });

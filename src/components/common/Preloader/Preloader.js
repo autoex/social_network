@@ -1,8 +1,9 @@
-import preloader from "../../../assets/images/preloader.gif";
+import classes from './Preloader.module.css'
+
 import React from "react";
 
 let Preloader = () => {
-    return <div style={{textAlign: 'center'}}><img src={preloader} alt={'Preloader'}/></div>
+    return <div className={classes.loading}>Loading&#8230;</div>
 };
 
 export default Preloader

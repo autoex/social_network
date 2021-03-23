@@ -4,6 +4,8 @@ const CHANGE_ACTIVE_PAGE = 'CHANGE_ACTIVE_PAGE';
 const SET_TOTAL_USERS = 'SET_TOTAL_USERS';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
+const TOGGLE_IN_PROGRESS = 'TOGGLE_IN_PROGRESS';
+
 
 let initState = {
     users: [],
@@ -11,7 +13,8 @@ let initState = {
     posts: [],
     totalCount: 0,
     pageSize: 5,
-    activePage: 1
+    activePage: 1,
+    inProgress: false
 
 };
 
@@ -24,6 +27,8 @@ const experimentalReducer = (state = initState, action) => {
             return {...state, posts: action.posts};
         case CHANGE_ACTIVE_PAGE:
             return {...state, activePage: action.page};
+        case TOGGLE_IN_PROGRESS:
+            return {...state, inProgress: action.status};
         case SET_TOTAL_USERS:
             return {...state, totalCount: action.num};
         case FOLLOW:
@@ -78,5 +83,9 @@ export const followAC = (idUser) => ({
 export const unFollowAC = (idUser) => ({
     type: UNFOLLOW,
     idUser
+});
+export const inProgressAC = (status) => ({
+    type: TOGGLE_IN_PROGRESS,
+    status
 });
 export default experimentalReducer;

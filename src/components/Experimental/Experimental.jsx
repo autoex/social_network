@@ -1,5 +1,6 @@
 import React from "react";
 import classes from './Experimental.module.css'
+import Preloader from "../common/Preloader/Preloader";
 
 function Experimental(props) {
     let pagesNumber = Math.ceil(props.expPage.totalCount / props.expPage.pageSize);
@@ -10,6 +11,7 @@ function Experimental(props) {
     }
 
     return (<>
+        {props.expPage.inProgress && <Preloader/>}
         <div className={classes.paginator}>{pages.map(p => <span key={p} onClick={() => {
             props.setActivePage(p)}}
                                                                  className={props.expPage.activePage === p && classes.activePage}>{p}</span>)}</div>
