@@ -27,7 +27,6 @@ const experimentalReducer = (state = initState, action) => {
         case SET_TOTAL_USERS:
             return {...state, totalCount: action.num};
         case FOLLOW:
-            debugger
             return {
                 ...state, users: state.users.map(u => {
                     if (u.id === action.idUser) {

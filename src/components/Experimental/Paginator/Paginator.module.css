@@ -1,0 +1,9 @@
+.paginator {
+    text-align: center;
+}
+.paginator span {
+    padding: 0 2px;
+}
+.activePage {
+    font-weight: bold;
+}
