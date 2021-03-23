@@ -31,7 +31,14 @@ class Experimental extends Component {
 
         this.getUsers(num);
 
-    }
+    };
+    follow =(idUser)=> {
+
+        this.props.follow(idUser)
+    };
+    unFollow =(idUser)=> {
+        this.props.unFollow(idUser)
+    };
 
     render() {
         let pagesNumber = Math.ceil(this.props.expPage.totalCount / this.props.expPage.pageSize);
@@ -46,7 +53,8 @@ class Experimental extends Component {
             <h1>{this.props.expPage.text}</h1>
 
             <ul>
-                {this.props.expPage.users.map(u=> <li key={u.id}>{u.name}</li>)}
+                {this.props.expPage.users.map(u=> <div key={u.id}><div>{u.name}</div>
+                    <div>{u.followed ? <button onClick={()=>{this.unFollow(u.id)}}>Unfollow</button> : <button onClick={()=>{this.follow(u.id)}}>Follow</button>}</div></div>)}
             </ul>
 
             <h2>Posts</h2>
