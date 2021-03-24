@@ -1,13 +1,13 @@
 import Experimental from "./Experimental";
 import {connect} from "react-redux";
 import {
-    activePageAC,
-    followAC,
-    getPostsAC,
-    getUsersAC,
-    inProgressAC,
-    setTotalUsersAC,
-    unFollowAC
+    setActivePage,
+    follow,
+    getPosts,
+    getUsers,
+    inProgress,
+    setTotalUsers,
+    unFollow
 } from "../../redux/exp-reducer";
 import React, {Component} from "react";
 import axios from "axios";
@@ -82,33 +82,33 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
     getUsers: (users) => {
-        dispatch(getUsersAC(users))
+        dispatch(getUsers(users))
     },
     getPosts: (posts) => {
-        dispatch(getPostsAC(posts));
+        dispatch(getPosts(posts));
 
     },
 
     setActivePage: (page) => {
-        dispatch(activePageAC(page));
+        dispatch(setActivePage(page));
 
     },
 
     setTotalUsers: (num) => {
-        dispatch(setTotalUsersAC(num));
+        dispatch(setTotalUsers(num));
 
     },
 
     follow: (idUser) => {
-        dispatch(followAC(idUser))
+        dispatch(follow(idUser))
     },
     unFollow: (idUser) => {
-        dispatch(unFollowAC(idUser))
+        dispatch(unFollow(idUser))
     },
     inProgress: (status) => {
-        dispatch(inProgressAC(status))
+        dispatch(inProgress(status))
     }
 
 });
-export default connect(mapStateToProps, mapDispatchToProps)(ExperimentalContainer);
+export default connect(mapStateToProps, {getUsers, getPosts, setActivePage, setTotalUsers, follow, unFollow, inProgress})(ExperimentalContainer);
 

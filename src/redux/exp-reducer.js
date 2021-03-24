@@ -59,32 +59,32 @@ const experimentalReducer = (state = initState, action) => {
 
 };
 
-export const getUsersAC = (users) => ({
+export const getUsers = (users) => ({
     type: GET_USERS,
     users
 });
-export const getPostsAC = (posts) => ({
+export const getPosts = (posts) => ({
     type: GET_POSTS,
     posts
 });
-export const activePageAC = (page) => ({
+export const setActivePage = (page) => ({
     type: CHANGE_ACTIVE_PAGE,
     page
 });
-export const setTotalUsersAC = (num) => ({
+export const setTotalUsers = (num) => ({
     type: SET_TOTAL_USERS,
     num
 });
-export const followAC = (idUser) => ({
+export const follow = (idUser) => ({
 
     type: FOLLOW,
     idUser
 });
-export const unFollowAC = (idUser) => ({
+export const unFollow = (idUser) => ({
     type: UNFOLLOW,
     idUser
 });
-export const inProgressAC = (status) => ({
+export const inProgress = (status) => ({
     type: TOGGLE_IN_PROGRESS,
     status
 });
