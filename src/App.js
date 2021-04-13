@@ -18,6 +18,7 @@ import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
 import {Provider} from "react-redux";
 import ExperimentalContainer from "./components/Experimental/ExperimentalContainer";
+import ProfileContainerExp from "./components/Experimental/Profile/ProfileContainerExp";
 
 
 class App extends Component {
@@ -40,7 +41,7 @@ class App extends Component {
                         {/*<Route path='/profile' render={() => <Profile state={profilePage}/>}/>*/}
 
 
-                        <Route path='/profile/:userId?'> <ProfileContainer/></Route> {/*Variant 2*/}
+                        <Route path='/profile/:userId?'> <ProfileContainerExp/></Route> {/*Variant 2*/}
 
 
                         <Route path='/users'

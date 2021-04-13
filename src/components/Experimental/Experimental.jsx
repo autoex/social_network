@@ -1,6 +1,8 @@
 import React from "react";
 import classes from './Experimental.module.css'
 import Preloader from "../common/Preloader/Preloader";
+import userIcon from '../../assets/images/user.png'
+import {NavLink} from "react-router-dom";
 
 function Experimental(props) {
     let pagesNumber = Math.ceil(props.expPage.totalCount / props.expPage.pageSize);
@@ -19,6 +21,7 @@ function Experimental(props) {
 
         <ul>
             {props.expPage.users.map(u => <div key={u.id}>
+                    <div><NavLink to={`/profile/` + u.id}><img className={classes.avaImg} src={u.photos.small ? u.photos.small :userIcon} alt=""/></NavLink> </div>
                 <div>{u.name}</div>
                 <div>{u.followed ? <button onClick={() => {
                     props.unFollow(u.id)
