@@ -5,7 +5,7 @@ import Preloader from "../../common/Preloader/Preloader";
 const ProfileExp = (props) => {
     if (!props.profileExp.profile) return <Preloader/>
     return (<>
-        {props.profileExp.profile.aboutMe}
+        {props.profileExp.profile.fullName}
     </>)
 };
 

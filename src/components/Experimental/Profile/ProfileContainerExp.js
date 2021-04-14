@@ -3,12 +3,14 @@ import ProfileExp from "./ProfileExp";
 import {connect} from "react-redux";
 import axios from 'axios'
 import {setProfile} from "../../../redux/profileExp-reducer";
+import {withRouter} from "react-router-dom";
 
 
-
-class ProfileContainerExp extends React.Component{
+class ProfileContainerExp extends React.Component {
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/profile/2').then(r=>this.props.setProfile(r.data))
+        debugger
+        let userId = this.props.match.params.userId;
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(r => this.props.setProfile(r.data))
     }
 
     render() {
@@ -17,8 +19,10 @@ class ProfileContainerExp extends React.Component{
 
 }
 
-const mapStateToProps =(state)=> ({
+const mapStateToProps = (state) => ({
     profileExp: state.profileExp
 
 });
-export default connect(mapStateToProps, {setProfile})(ProfileContainerExp);
+
+
+export default withRouter(connect(mapStateToProps, {setProfile})(ProfileContainerExp));
