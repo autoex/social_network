@@ -3,6 +3,7 @@ import classes from './Experimental.module.css'
 import Preloader from "../common/Preloader/Preloader";
 import userIcon from '../../assets/images/user.png'
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 function Experimental(props) {
     let pagesNumber = Math.ceil(props.expPage.totalCount / props.expPage.pageSize);
@@ -24,9 +25,15 @@ function Experimental(props) {
                     <div><NavLink to={`/profile/` + u.id}><img className={classes.avaImg} src={u.photos.small ? u.photos.small :userIcon} alt=""/></NavLink> </div>
                 <div>{u.name}</div>
                 <div>{u.followed ? <button onClick={() => {
-                    props.unFollow(u.id)
+
+                    axios.patch(`http://localhost:3000/users/${u.id}`, {followed: false}, {headers: {'Content-Type': 'application/json'}}).then(e=> {console.log(e); if (e.status === 200) props.unFollow(u.id)});
+
                 }}>Unfollow</button> : <button onClick={() => {
-                    props.follow(u.id)
+                    axios.patch(`http://localhost:3000/users/${u.id}`, {followed: true}, {headers: {'Content-Type': 'application/json'}}).then(e=> {console.log(e); if (e.status === 200) props.follow(u.id)});
+
+
+
+
                 }}>Follow</button>}</div>
             </div>)}
         </ul>

@@ -24,9 +24,11 @@ class ExperimentalContainer extends Component {
     getUsers = async (pageNumber) => {
         this.props.inProgress(true);
         // let users = await axios(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.expPage.pageSize}`);
-        let allUsersArray = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items`);
+        // let allUsersArray = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items`);
+        let allUsersArray = await axios(`http://localhost:3000/users`);
         let totalUsersCount = allUsersArray.data.length;
-        let users = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items?_page=${pageNumber}&_limit=${this.props.expPage.pageSize}`);
+        // let users = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items?_page=${pageNumber}&_limit=${this.props.expPage.pageSize}`);
+        let users = await axios(`http://localhost:3000/users?_page=${pageNumber}&_limit=${this.props.expPage.pageSize}`);
 
         this.props.setTotalUsers(totalUsersCount);
         this.props.getUsers(users.data);
