@@ -11,6 +11,7 @@ import {
 } from "../../redux/exp-reducer";
 import React, {Component} from "react";
 import axios from "axios";
+import usersAPI from "./Profile/API/API";
 
 
 
@@ -25,20 +26,23 @@ class ExperimentalContainer extends Component {
         this.props.inProgress(true);
         // let users = await axios(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.expPage.pageSize}`);
         // let allUsersArray = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items`);
-        let allUsersArray = await axios(`http://localhost:3000/users`);
+
+        let allUsersArray = await usersAPI.getUsersArr();
+
         let totalUsersCount = allUsersArray.data.length;
         // let users = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items?_page=${pageNumber}&_limit=${this.props.expPage.pageSize}`);
-        let users = await axios(`http://localhost:3000/users?_page=${pageNumber}&_limit=${this.props.expPage.pageSize}`);
+        let users = await usersAPI.getUsers(pageNumber, this.props.expPage.pageSize);
+
 
         this.props.setTotalUsers(totalUsersCount);
-        this.props.getUsers(users.data);
+        this.props.getUsers(users);
         this.props.inProgress(false);
 
     };
 
     getPosts= async () => {
-        let posts = await axios('https://jsonplaceholder.typicode.com/posts');
-        this.props.getPosts(posts.data);
+        let posts = await usersAPI.getPosts();
+        this.props.getPosts(posts);
 
     };
 
