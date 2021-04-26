@@ -17,7 +17,7 @@ function Experimental(props) {
         {props.expPage.inProgress && <Preloader/>}
         <div className={classes.paginator}>{pages.map(p => <span key={p} onClick={() => {
             props.setActivePage(p)}}
-                                                                 className={props.expPage.activePage === p && classes.activePage}>{p}</span>)}</div>
+                                                                 className={props.expPage.activePage === p ? classes.activePage : undefined}>{p}</span>)}</div>
         <h1>{props.expPage.text}</h1>
 
         <ul>
