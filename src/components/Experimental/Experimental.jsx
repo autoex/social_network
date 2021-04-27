@@ -16,25 +16,41 @@ function Experimental(props) {
     return (<>
         {props.expPage.inProgress && <Preloader/>}
         <div className={classes.paginator}>{pages.map(p => <span key={p} onClick={() => {
-            props.setActivePage(p)}}
+            props.setActivePage(p)
+        }}
                                                                  className={props.expPage.activePage === p ? classes.activePage : undefined}>{p}</span>)}</div>
         <h1>{props.expPage.text}</h1>
 
         <ul>
             {props.expPage.users.map(u => <div key={u.id}>
-                    <div><NavLink to={`/profile/` + u.id}><img className={classes.avaImg} src={u.photos.small ? u.photos.small :userIcon} alt=""/></NavLink> </div>
+                <div><NavLink to={`/profile/` + u.id}><img className={classes.avaImg}
+                                                           src={u.photos.small ? u.photos.small : userIcon}
+                                                           alt=""/></NavLink></div>
                 <div>{u.name}</div>
-                <div>{u.followed ? <button onClick={() => {
+                <div>{u.followed ?
+                    <button disabled={props.expPage.followingProgress.some(id => id === u.id)} onClick={() => {
 
-                    axios.patch(`http://localhost:3000/users/${u.id}`, {followed: false}, {headers: {'Content-Type': 'application/json'}}).then(e=> {console.log(e); if (e.status === 200) props.unFollow(u.id)});
+                        props.toggleFollowing(true, u.id);
+                        axios.patch(`http://localhost:3000/users/${u.id}`, {followed: false}, {headers: {'Content-Type': 'application/json'}})
+                            .then(e => {
+                                console.log(e);
+                                if (e.status === 200) props.unFollow(u.id);
+                                props.toggleFollowing(false, u.id);
+                            });
 
-                }}>Unfollow</button> : <button onClick={() => {
-                    axios.patch(`http://localhost:3000/users/${u.id}`, {followed: true}, {headers: {'Content-Type': 'application/json'}}).then(e=> {console.log(e); if (e.status === 200) props.follow(u.id)});
+
+                    }}>Unfollow</button> :
+                    <button disabled={props.expPage.followingProgress.some(id => id === u.id)} onClick={() => {
+                        props.toggleFollowing(true, u.id);
+                        axios.patch(`http://localhost:3000/users/${u.id}`, {followed: true}, {headers: {'Content-Type': 'application/json'}})
+                            .then(e => {
+                                console.log(e);
+                                if (e.status === 200) props.follow(u.id);
+                                props.toggleFollowing(false, u.id);
+                            });
 
 
-
-
-                }}>Follow</button>}</div>
+                    }}>Follow</button>}</div>
             </div>)}
         </ul>
 

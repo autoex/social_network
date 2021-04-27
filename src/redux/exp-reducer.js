@@ -5,6 +5,7 @@ const SET_TOTAL_USERS = 'SET_TOTAL_USERS';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const TOGGLE_IN_PROGRESS = 'TOGGLE_IN_PROGRESS';
+const TOGGLE_FOLLOWING = 'TOGGLE_FOLLOWING';
 
 
 let initState = {
@@ -14,7 +15,8 @@ let initState = {
     totalCount: 0,
     pageSize: 5,
     activePage: 1,
-    inProgress: false
+    inProgress: false,
+    followingProgress: []
 
 };
 
@@ -31,6 +33,9 @@ const experimentalReducer = (state = initState, action) => {
             return {...state, inProgress: action.status};
         case SET_TOTAL_USERS:
             return {...state, totalCount: action.num};
+        case TOGGLE_FOLLOWING:
+            return {...state,
+                followingProgress: action.followingStatus ? [...state.followingProgress, action.userID] : state.followingProgress.filter(id=> id!== action.userID)};
         case FOLLOW:
             return {
                 ...state, users: state.users.map(u => {
@@ -87,5 +92,11 @@ export const unFollow = (idUser) => ({
 export const inProgress = (status) => ({
     type: TOGGLE_IN_PROGRESS,
     status
+});
+
+export const toggleFollowing = (followingStatus, userID) => ({
+    type: TOGGLE_FOLLOWING,
+    followingStatus,
+    userID
 });
 export default experimentalReducer;

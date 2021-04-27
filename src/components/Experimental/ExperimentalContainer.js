@@ -7,7 +7,7 @@ import {
     getUsers,
     inProgress,
     setTotalUsers,
-    unFollow
+    unFollow, toggleFollowing
 } from "../../redux/exp-reducer";
 import React, {Component} from "react";
 import axios from "axios";
@@ -75,6 +75,7 @@ class ExperimentalContainer extends Component {
                          follow={this.follow}
                          unFollow={this.unFollow}
                          expPage={this.props.expPage}
+                         toggleFollowing={this.props.toggleFollowing}
            />
         </>)
     }
@@ -116,5 +117,5 @@ const mapDispatchToProps = (dispatch) => ({
     }
 
 });
-export default connect(mapStateToProps, {getUsers, getPosts, setActivePage, setTotalUsers, follow, unFollow, inProgress})(ExperimentalContainer);
+export default connect(mapStateToProps, {getUsers, getPosts, setActivePage, setTotalUsers, follow, unFollow, inProgress, toggleFollowing})(ExperimentalContainer);
 
