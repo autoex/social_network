@@ -9,5 +9,10 @@
 }
 .avaImg {
     width: 85px;
+    opacity: .8;
+    transition: all .4s;
 
+}
+.avaImg:hover {
+    opacity: 1;
 }
