@@ -9,7 +9,7 @@ const placeholderInstance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com/posts'
 });
 
-const usersAPI = {
+export const usersAPI = {
     getUsersArr() {
         return localInstance()
     },
@@ -24,15 +24,14 @@ const usersAPI = {
 
     },
 
-    unfollow(userId) {
-
-        axios.localInstance(`${userId}`, {followed: false})
+    unFollow(userId) {
+       return  localInstance.patch(`${userId}`, {followed: false})
 
     },
 
     follow(userId) {
 
-        axios.localInstance(`${userId}`, {followed: true})
+        return localInstance.patch(`${userId}`, {followed: true})
 
     }
 };
