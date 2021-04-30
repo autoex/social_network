@@ -3,8 +3,6 @@ import classes from './Experimental.module.css'
 import Preloader from "../common/Preloader/Preloader";
 import userIcon from '../../assets/images/user.png'
 import {NavLink} from "react-router-dom";
-import axios from "axios";
-import {usersAPI} from "./Profile/API/API";
 
 function Experimental(props) {
     let pagesNumber = Math.ceil(props.expPage.totalCount / props.expPage.pageSize);
@@ -31,25 +29,12 @@ function Experimental(props) {
                 <div>{u.followed ?
                     <button disabled={props.expPage.followingProgress.some(id => id === u.id)} onClick={() => {
 
-                        props.toggleFollowing(true, u.id);
-
-                       usersAPI.unFollow(u.id)
-                            .then(e => {
-                                console.log(e);
-                                if (e.status === 200) props.unFollow(u.id);
-                                props.toggleFollowing(false, u.id);
-                            });
+                        props.unFollowThunk(u.id)
 
 
                     }}>Unfollow</button> :
                     <button disabled={props.expPage.followingProgress.some(id => id === u.id)} onClick={() => {
-                        props.toggleFollowing(true, u.id);
-                        usersAPI.follow(u.id)
-                            .then(e => {
-                                console.log(e);
-                                if (e.status === 200) props.follow(u.id);
-                                props.toggleFollowing(false, u.id);
-                            });
+                        props.followThunk(u.id)
 
 
                     }}>Follow</button>}</div>

@@ -7,11 +7,11 @@ import {
     getUsers,
     inProgress,
     setTotalUsers,
-    unFollow, toggleFollowing
+    unFollow,
+    toggleFollowing,
+    followThunk, unFollowThunk, getPostsThunk, getUsersThunk
 } from "../../redux/exp-reducer";
 import React, {Component} from "react";
-import axios from "axios";
-import usersAPI from "./Profile/API/API";
 
 
 
@@ -23,40 +23,21 @@ class ExperimentalContainer extends Component {
     }
 
     getUsers = async (pageNumber) => {
-        this.props.inProgress(true);
-        // let users = await axios(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.expPage.pageSize}`);
-        // let allUsersArray = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items`);
-
-        let allUsersArray = await usersAPI.getUsersArr();
-        debugger
-        let totalUsersCount = allUsersArray.data.length;
-        // let users = await axios(`https://my-json-server.typicode.com/autoex/it-kama_rest/items?_page=${pageNumber}&_limit=${this.props.expPage.pageSize}`);
-        let users = await usersAPI.getUsers(pageNumber, this.props.expPage.pageSize);
-
-
-        this.props.setTotalUsers(totalUsersCount);
-        this.props.getUsers(users);
-        this.props.inProgress(false);
+        this.props.getUsersThunk(pageNumber, this.props.expPage.pageSize)
 
     };
 
     getPosts= async () => {
-        let posts = await usersAPI.getPosts();
-        this.props.getPosts(posts);
-
+        this.props.getPostsThunk();
     };
 
     setActivePage =(num)=> {
-
         this.props.setActivePage(num);
-
         this.getUsers(num);
-
     };
+
     follow =(idUser)=> {
-
-
-        this.props.follow(idUser)
+        this.props.follow(idUser);
     };
     unFollow =(idUser)=> {
         this.props.unFollow(idUser)
@@ -72,10 +53,9 @@ class ExperimentalContainer extends Component {
 
         return (<>
            <Experimental setActivePage={this.setActivePage}
-                         follow={this.follow}
-                         unFollow={this.unFollow}
                          expPage={this.props.expPage}
-                         toggleFollowing={this.props.toggleFollowing}
+                         followThunk={this.props.followThunk}
+                         unFollowThunk={this.props.unFollowThunk}
            />
         </>)
     }
@@ -117,5 +97,5 @@ const mapDispatchToProps = (dispatch) => ({
     }
 
 });
-export default connect(mapStateToProps, {getUsers, getPosts, setActivePage, setTotalUsers, follow, unFollow, inProgress, toggleFollowing})(ExperimentalContainer);
+export default connect(mapStateToProps, {getUsers, getPosts, setActivePage, setTotalUsers, follow, unFollow, inProgress, toggleFollowing, followThunk, unFollowThunk, getPostsThunk, getUsersThunk})(ExperimentalContainer);
 

@@ -1,3 +1,5 @@
+import {usersAPI} from "../components/Experimental/Profile/API/API";
+
 const GET_USERS = 'GET_USERS';
 const GET_POSTS = 'GET_POSTS';
 const CHANGE_ACTIVE_PAGE = 'CHANGE_ACTIVE_PAGE';
@@ -34,8 +36,10 @@ const experimentalReducer = (state = initState, action) => {
         case SET_TOTAL_USERS:
             return {...state, totalCount: action.num};
         case TOGGLE_FOLLOWING:
-            return {...state,
-                followingProgress: action.followingStatus ? [...state.followingProgress, action.userID] : state.followingProgress.filter(id=> id!== action.userID)};
+            return {
+                ...state,
+                followingProgress: action.followingStatus ? [...state.followingProgress, action.userID] : state.followingProgress.filter(id => id !== action.userID)
+            };
         case FOLLOW:
             return {
                 ...state, users: state.users.map(u => {
@@ -99,4 +103,66 @@ export const toggleFollowing = (followingStatus, userID) => ({
     followingStatus,
     userID
 });
+
+
+export const followThunk = (userId) => {
+
+    return (dispatch) => {
+
+        dispatch(toggleFollowing(true, userId));
+        usersAPI.follow(userId)
+            .then(e => {
+                if (e.status === 200) dispatch(follow(userId));
+                dispatch(toggleFollowing(false, userId));
+            });
+
+    }
+};
+
+export const unFollowThunk = (userId) => {
+
+    return (dispatch) => {
+
+        dispatch(toggleFollowing(true, userId));
+
+        usersAPI.unFollow(userId)
+            .then(e => {
+                if (e.status === 200) dispatch(unFollow(userId));
+                dispatch(toggleFollowing(false, userId));
+            });
+
+    }
+};
+
+
+export const getPostsThunk = () => {
+
+    return async (dispatch) => {
+
+        let posts = await usersAPI.getPosts();
+        dispatch(getPosts(posts));
+
+    }
+};
+
+
+export const getUsersThunk = (pageNumber, pageSize) => {
+
+    return async (dispatch) => {
+
+        dispatch(inProgress(true));
+
+
+        let allUsersArray = await usersAPI.getUsersArr();
+        let totalUsersCount = allUsersArray.data.length;
+
+        let users = await usersAPI.getUsers(pageNumber, pageSize);
+
+
+        dispatch(setTotalUsers(totalUsersCount));
+        dispatch(getUsers(users));
+        dispatch(inProgress(false));
+
+    }
+};
 export default experimentalReducer;
