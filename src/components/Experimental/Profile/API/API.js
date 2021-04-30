@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const localInstance = axios.create({
-    baseURL: 'http://localhost:3000/users'
+    baseURL: 'http://localhost:3000/users/',
+    headers: {'Content-Type': 'application/json'}
 });
 
 const placeholderInstance = axios.create({
@@ -20,6 +21,18 @@ const usersAPI = {
        return  placeholderInstance().then(data => data.data);
 
 
+
+    },
+
+    unfollow(userId) {
+
+        axios.localInstance(`${userId}`, {followed: false})
+
+    },
+
+    follow(userId) {
+
+        axios.localInstance(`${userId}`, {followed: true})
 
     }
 };

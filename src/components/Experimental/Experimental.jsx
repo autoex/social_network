@@ -4,6 +4,7 @@ import Preloader from "../common/Preloader/Preloader";
 import userIcon from '../../assets/images/user.png'
 import {NavLink} from "react-router-dom";
 import axios from "axios";
+import {usersAPI} from "../../API/api";
 
 function Experimental(props) {
     let pagesNumber = Math.ceil(props.expPage.totalCount / props.expPage.pageSize);
@@ -31,7 +32,7 @@ function Experimental(props) {
                     <button disabled={props.expPage.followingProgress.some(id => id === u.id)} onClick={() => {
 
                         props.toggleFollowing(true, u.id);
-                        axios.patch(`http://localhost:3000/users/${u.id}`, {followed: false}, {headers: {'Content-Type': 'application/json'}})
+                       usersAPI.unFollow(u.id)
                             .then(e => {
                                 console.log(e);
                                 if (e.status === 200) props.unFollow(u.id);
@@ -42,7 +43,7 @@ function Experimental(props) {
                     }}>Unfollow</button> :
                     <button disabled={props.expPage.followingProgress.some(id => id === u.id)} onClick={() => {
                         props.toggleFollowing(true, u.id);
-                        axios.patch(`http://localhost:3000/users/${u.id}`, {followed: true}, {headers: {'Content-Type': 'application/json'}})
+                        usersAPI.follow(u.id)
                             .then(e => {
                                 console.log(e);
                                 if (e.status === 200) props.follow(u.id);
